@@ -74,6 +74,7 @@ form,
 #gm-view h2 {
     font: 700 clamp(3vw, 4.2dvh, 5vw)/1 var(--display);
     text-transform: uppercase;
+    text-align: center;
 }
 .entry-intro p {
     color: color-mix(in srgb, var(--white) 72%, transparent);

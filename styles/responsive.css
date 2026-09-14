@@ -90,7 +90,7 @@
     }
     header {
         min-height: 0;
-        flex: 0 0 18vh;
+        flex: 0 0 auto;
         padding: 1.5vh 2vw;
     }
     h1 {

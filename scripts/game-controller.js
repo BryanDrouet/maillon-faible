@@ -1,13 +1,13 @@
 import { onValue, ref, runTransaction, update } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 import { db } from "./firebase.js";
-import { activePlayers, chainValues, createRoomCode, formatRoomCode, gameEvent } from "./game-calculations.js";
+import { activePlayers, chainValue, chainValues, createRoomCode, formatRoomCode, gameEvent, remainingSeconds, roundDuration } from "./game-calculations.js";
 import { playGameSound, unlockAudio } from "./game-audio.js";
 import { renderGame, showView } from "./game-display.js";
 
 const $ = (id) => document.getElementById(id);
 const clientId = sessionStorage.getItem("mf-id") || crypto.randomUUID();
 sessionStorage.setItem("mf-id", clientId);
-let questions = [], roomId = "", role = "", name = "", state, lastEvent = "";
+let questions = [], roomId = "", role = "", name = "", state, lastEvent = "", timerId;
 const roomRef = () => ref(db, `rooms/${roomId}`);
 const change = (valuesToApply) => { if (state) update(roomRef(), valuesToApply); };
 
@@ -21,6 +21,12 @@ function subscribe() {
         }
         renderGame(state, { roomId, role, clientId, questions, voteFor: (playerId) => update(ref(db, `rooms/${roomId}/votes`), { [clientId]: playerId }) });
     });
+    clearInterval(timerId);
+    timerId = setInterval(() => {
+        if (!state) return;
+        renderGame(state, { roomId, role, clientId, questions, voteFor: (playerId) => update(ref(db, `rooms/${roomId}/votes`), { [clientId]: playerId }) });
+        if (role === "gm" && state.phase === "playing" && remainingSeconds(state) === 0) change({ phase: "voting", ...gameEvent("end") });
+    }, 1000);
 }
 
 async function enterRoom(create) {
@@ -32,7 +38,7 @@ async function enterRoom(create) {
         return;
     }
     if (create) {
-        const result = await runTransaction(roomRef(), (current) => current || { hostId: clientId, hostName: name, phase: "lobby", bank: 0, chainIndex: 0, questionIndex: 0, players: {}, votes: {} });
+        const result = await runTransaction(roomRef(), (current) => current || { hostId: clientId, hostName: name, phase: "lobby", round: 0, endsAt: 0, bank: 0, chainIndex: 0, questionIndex: 0, players: {}, votes: {} });
         if (result.snapshot.val().hostId !== clientId) return enterRoom(true);
         role = "gm";
         $("gm-room-code").textContent = `Salon : ${roomId}`;
@@ -72,15 +78,17 @@ export async function startGameApp() {
     $("btn-bank").onclick = () => change({ bankRequest: { id: clientId, name }, ...gameEvent("bank") });
     $("btn-correct").onclick = () => change({ chainIndex: Math.min((state.chainIndex || 0) + 1, chainValues.length - 1), bankRequest: null, ...gameEvent("correct") });
     $("btn-wrong").onclick = () => change({ chainIndex: 0, bankRequest: null, ...gameEvent("wrong") });
-    $("btn-validate-bank").onclick = () => change({ bank: (state.bank || 0) + (chainValues[state.chainIndex] || 0), chainIndex: 0, bankRequest: null, ...gameEvent("bank") });
+    $("btn-validate-bank").onclick = () => change({ bank: (state.bank || 0) + chainValue(state), chainIndex: 0, bankRequest: null, ...gameEvent("bank") });
     $("btn-next-question").onclick = () => change({ questionIndex: ((state.questionIndex || 0) + 1) % Math.max(questions.length, 1) });
-    $("btn-start").onclick = () => change({ phase: "playing", votes: {}, ...gameEvent("start") });
+    $("btn-start").onclick = () => {
+        const round = (state.round || 0) + 1;
+        change({ phase: "playing", round, endsAt: Date.now() + roundDuration(round) * 1000, votes: {}, ...gameEvent("start") });
+    };
     $("btn-vote").onclick = () => change({ phase: "voting", votes: {}, ...gameEvent("end") });
     $("btn-eliminate").onclick = eliminate;
-    $("btn-new-game").onclick = () => runTransaction(roomRef(), (game) => ({ ...game, phase: "lobby", bank: 0, chainIndex: 0, questionIndex: 0, bankRequest: null, votes: {}, players: Object.fromEntries(Object.entries(game.players || {}).map(([id, player]) => [id, { ...player, active: true }])), ...gameEvent("end") }));
+    $("btn-new-game").onclick = () => runTransaction(roomRef(), (game) => ({ ...game, phase: "lobby", round: 0, endsAt: 0, bank: 0, chainIndex: 0, questionIndex: 0, bankRequest: null, votes: {}, players: Object.fromEntries(Object.entries(game.players || {}).map(([id, player]) => [id, { ...player, active: true }])), ...gameEvent("end") }));
     $("btn-copy-overlay").onclick = async () => {
         await navigator.clipboard.writeText(`${location.origin}/overlay/?room=${roomId}`);
         $("connection-status").textContent = "Lien overlay copié.";
     };
-    lucide.createIcons();
 }

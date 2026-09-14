@@ -7,7 +7,6 @@
         <meta name="description" content="Jeu du Maillon Faible en direct.">
         <title>Le Maillon Faible</title>
         <link rel="stylesheet" href="style.css">
-        <script src="https://unpkg.com/lucide@latest"></script>
     </head>
     <body>
         <div class="stage-lights" aria-hidden="true">
@@ -66,7 +65,7 @@
                             name="entry-action"
                             value="create"
                         >
-                            <i data-lucide="mic-2"></i> Je présente
+                            Je présente
                         </button>
                         <button
                             type="submit"
@@ -74,7 +73,7 @@
                             name="entry-action"
                             value="join"
                         >
-                            <i data-lucide="zap"></i> Je joue
+                            Je joue
                         </button>
                     </div>
                 </form>
@@ -85,12 +84,13 @@
                 <p id="player-room-code" class="room-code"></p>
                 <div class="game-info">
                     <p id="player-bank-display"></p>
-                    <p id="player-chain-display"></p>
                     <p id="player-cash-display"></p>
+                    <p id="player-next-chain-display"></p>
                 </div>
                 <p id="player-status" class="game-status" aria-live="polite"></p>
+                <p id="player-timer" class="game-timer" aria-live="polite"></p>
                 <button type="button" id="btn-bank" aria-label="Banquer l'argent">
-                    <i data-lucide="piggy-bank"></i><span>BANQUE !</span>
+                    <span>BANQUE !</span>
                 </button>
                 <section id="player-vote" class="hidden" aria-labelledby="vote-title">
                     <h3 id="vote-title">Votez pour le maillon faible</h3>
@@ -103,16 +103,16 @@
                 <p id="gm-room-code" class="room-code"></p>
                 <div class="game-stats">
                     <div class="stat-box">
-                        <i data-lucide="coins"></i>
                         <p id="gm-bank-total"></p>
                     </div>
                     <div class="stat-box">
-                        <i data-lucide="trending-up"></i>
-                        <p id="gm-current-chain"></p>
+                        <p id="gm-cash-turn"></p>
+                    </div>
+                    <div class="stat-box">
+                        <p id="gm-next-chain"></p>
                     </div>
                 </div>
                 <div class="bank-alert">
-                    <i data-lucide="bell"></i>
                     <p id="gm-bank-requests" aria-live="assertive"></p>
                 </div>
                 <div class="question-box">
@@ -120,34 +120,35 @@
                     <p id="gm-answer-text"></p>
                 </div>
                 <p id="gm-round-status" class="game-status" aria-live="polite"></p>
+                <p id="gm-timer" class="game-timer" aria-live="polite"></p>
                 <div id="gm-player-list" class="player-list"></div>
                 <div class="gm-controls">
                     <button type="button" id="btn-correct">
-                        <i data-lucide="check-circle"></i> Bonne réponse
+                        Bonne réponse
                     </button>
                     <button type="button" id="btn-wrong">
-                        <i data-lucide="x-circle"></i> Mauvaise réponse
+                        Mauvaise réponse
                     </button>
                     <button type="button" id="btn-validate-bank">
-                        <i data-lucide="check-square"></i> Valider la banque
+                        Valider la banque
                     </button>
                     <button type="button" id="btn-next-question">
-                        <i data-lucide="arrow-right-circle"></i> Question suivante
+                        Question suivante
                     </button>
                     <button type="button" id="btn-start">
-                        <i data-lucide="play-circle"></i> Démarrer la manche
+                        Démarrer la manche
                     </button>
                     <button type="button" id="btn-vote">
-                        <i data-lucide="users-round"></i> Lancer le vote
+                        Lancer le vote
                     </button>
                     <button type="button" id="btn-eliminate">
-                        <i data-lucide="user-minus"></i> Éliminer le plus voté
+                        Éliminer le plus voté
                     </button>
                     <button type="button" id="btn-new-game">
-                        <i data-lucide="rotate-ccw"></i> Nouvelle partie
+                        Nouvelle partie
                     </button>
                     <button type="button" id="btn-copy-overlay">
-                        <i data-lucide="copy"></i> Copier le lien overlay
+                        Copier le lien overlay
                     </button>
                 </div>
             </section>

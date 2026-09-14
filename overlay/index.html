@@ -9,16 +9,20 @@
     <body>
         <main class="overlay" aria-live="polite">
             <section class="score">
-                <span>Banque</span>
+                <span>Banque totale</span>
                 <strong id="bank">0€</strong>
             </section>
+            <section class="score">
+                <span>Cash du tour</span>
+                <strong id="cash">0€</strong>
+            </section>
             <section class="center">
-                <span>Le Maillon Faible</span>
                 <strong id="status">En attente</strong>
+                <em id="timer"></em>
             </section>
             <section class="score right">
-                <span>Palier</span>
-                <strong id="chain">0€</strong>
+                <span>Prochain palier</span>
+                <strong id="next-chain">0€</strong>
             </section>
         </main>
         <script type="module" src="/overlay/main.js"></script>

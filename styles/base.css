@@ -39,8 +39,8 @@ button {
         transform 0.15s ease;
 }
 button:hover:not(:disabled) {
-    filter: brightness(1.14);
-    transform: translateY(-0.35vh);
+    filter: brightness(1.05);
+    transform: translateY(-0.15vh);
 }
 button:disabled {
     cursor: not-allowed;
