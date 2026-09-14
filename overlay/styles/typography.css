@@ -1,0 +1,23 @@
+.score span,
+.center span {
+    max-width: 100%;
+    color: color-mix(in srgb, var(--white) 72%, transparent);
+    font:
+        700 clamp(1.5vw, 7vh, 3vw) "Space Grotesk",
+        sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+strong {
+    max-width: 100%;
+    color: var(--gold);
+    font:
+        800 clamp(5vw, 23vh, 10vw)/1 "Barlow Condensed",
+        sans-serif;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.center strong {
+    color: var(--cyan);
+    font-size: clamp(3vw, 13vh, 6vw);
+}

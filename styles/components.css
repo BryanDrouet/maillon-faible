@@ -1,0 +1,151 @@
+label {
+    font-size: clamp(0.9vw, 1.8dvh, 1.3vw);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+small,
+.game-status {
+    color: color-mix(in srgb, var(--white) 64%, transparent);
+    font-size: clamp(0.8vw, 1.6dvh, 1.2vw);
+}
+input {
+    min-height: 6dvh;
+    width: 100%;
+    border: 0.12vw solid color-mix(in srgb, var(--white) 40%, transparent);
+    border-radius: 0.35vw;
+    color: var(--white);
+    background: var(--ink);
+    font-size: clamp(1vw, 2dvh, 1.5vw);
+    text-align: center;
+}
+input:focus {
+    border-color: var(--cyan);
+}
+#btn-create,
+#btn-wrong,
+#btn-eliminate,
+#btn-bank {
+    background: var(--red);
+}
+#btn-join,
+#btn-next-question,
+#btn-correct,
+#btn-start,
+.vote-options button {
+    background: color-mix(in srgb, var(--cyan) 57%, var(--ink));
+}
+#btn-validate-bank {
+    background: color-mix(in srgb, var(--gold) 65%, var(--ink));
+}
+#btn-vote {
+    background: color-mix(in srgb, var(--red) 55%, var(--cyan));
+}
+#btn-new-game,
+#btn-copy-overlay {
+    color: var(--ink);
+    background: var(--white);
+}
+.room-code {
+    align-self: flex-start;
+    color: var(--cyan);
+    font-size: clamp(0.9vw, 1.7dvh, 1.3vw);
+    font-weight: 700;
+}
+.game-info {
+    border: 0.12vw solid color-mix(in srgb, var(--cyan) 34%, transparent);
+    border-radius: 1vw;
+    background: color-mix(in srgb, var(--cyan) 7%, var(--ink));
+}
+.game-info p {
+    flex: 1;
+    min-height: 8dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 0.12vw solid color-mix(in srgb, var(--cyan) 28%, transparent);
+    font: 700 clamp(1.5vw, 3dvh, 2.5vw) var(--display);
+    text-align: center;
+    text-transform: uppercase;
+}
+.game-info p:last-child {
+    border: 0;
+    color: var(--gold);
+}
+#btn-bank {
+    flex: 1;
+    min-height: 24dvh;
+    border-color: color-mix(in srgb, var(--white) 45%, var(--red));
+    box-shadow: 1vw 1vw 0 color-mix(in srgb, var(--red) 23%, transparent);
+    font: 800 clamp(7vw, 12dvh, 12vw) var(--display);
+}
+#btn-bank i {
+    width: 6vw;
+    height: 6vw;
+}
+#player-vote h3 {
+    font: 700 clamp(2vw, 3.5dvh, 4vw) var(--display);
+    text-transform: uppercase;
+}
+.vote-options button,
+.player-item {
+    flex: 1 1 22%;
+    min-width: 18%;
+}
+.stat-box,
+.question-box,
+.player-item {
+    border: 0.12vw solid color-mix(in srgb, var(--cyan) 30%, transparent);
+    border-radius: 1vw;
+    background: color-mix(in srgb, var(--cyan) 6%, var(--ink));
+}
+.stat-box {
+    flex: 1;
+    min-height: 10dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+    color: var(--cyan);
+}
+.stat-box p {
+    color: var(--white);
+    font: 700 clamp(1.5vw, 3dvh, 2.5vw) var(--display);
+    text-transform: uppercase;
+}
+.bank-alert {
+    min-height: 6dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+    color: var(--gold);
+    border: 0.12vw solid var(--gold);
+    background: color-mix(in srgb, var(--gold) 10%, transparent);
+    font-size: clamp(1vw, 1.8dvh, 1.4vw);
+}
+.question-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2dvh;
+    padding: 2dvh 2vw;
+    border-left: 0.6vw solid var(--cyan);
+    font-size: clamp(1.6vw, 3dvh, 2.8vw);
+    line-height: 1.15;
+}
+#gm-answer-text {
+    color: var(--gold);
+    font-size: 0.78em;
+}
+.player-item {
+    min-height: 5dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.9vw, 1.6dvh, 1.2vw);
+}
+.gm-controls button {
+    flex: 1 1 20%;
+    font-size: clamp(0.8vw, 1.6dvh, 1.2vw);
+}
