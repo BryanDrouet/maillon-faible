@@ -18,5 +18,10 @@ self.addEventListener("activate", (event) => {
 // Ne sert que le shell en cache ; laisse passer Firebase et les autres requêtes vers le réseau.
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET" || !event.request.url.startsWith(self.location.origin)) return;
-  event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request)));
+  event.respondWith(
+    caches
+      .match(event.request)
+      .then((cached) => cached || fetch(event.request))
+      .catch(() => caches.match(event.request)),
+  );
 });
