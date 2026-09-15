@@ -1,61 +1,61 @@
 .stage-lights {
-    position: fixed;
-    inset: 0 0 auto;
-    height: 0.6dvh;
-    width: 100%;
-    display: flex;
-    z-index: 2;
+	position: fixed;
+	inset: 0 0 auto;
+	height: 0.6dvh;
+	width: 100%;
+	display: flex;
+	z-index: 2;
 }
 .stage-lights span {
-    flex: 1;
+	flex: 1;
 }
 .stage-lights span:nth-child(odd) {
-    background: var(--cyan);
-    box-shadow: 0 0 2vw var(--cyan);
+	background: var(--cyan);
+	box-shadow: 0 0 2vw var(--cyan);
 }
 .stage-lights span:nth-child(even) {
-    background: var(--red);
-    box-shadow: 0 0 2vw var(--red);
+	background: var(--red);
+	box-shadow: 0 0 2vw var(--red);
 }
 #app-container {
-    width: 100%;
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    gap: 3dvh;
-    padding: 3dvh 4vw;
+	width: 100%;
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+	gap: 3dvh;
+	padding: 3dvh 4vw;
 }
 header {
-    min-height: 20dvh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.6dvh;
-    padding: 1.2dvh 3vw;
-    text-align: center;
+	min-height: 20dvh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.6dvh;
+	padding: 1.2dvh 3vw;
+	text-align: center;
 }
 h1 {
-    font: 800 clamp(5vw, 10dvh, 9vw)/0.78 var(--display);
-    text-transform: uppercase;
+	font: 800 clamp(5vw, 10dvh, 9vw)/0.78 var(--display);
+	text-transform: uppercase;
 }
 .header-subtitle {
-    color: color-mix(in srgb, var(--white) 70%, transparent);
-    font-size: clamp(0.7vw, 1.6dvh, 1.1vw);
-    white-space: nowrap;
+	color: color-mix(in srgb, var(--white) 70%, transparent);
+	font-size: clamp(0.7vw, 1.6dvh, 1.1vw);
+	white-space: nowrap;
 }
 #connection-status {
-    color: var(--cyan);
-    font-size: clamp(0.8vw, 1.7dvh, 1.3vw);
-    font-weight: 700;
+	color: var(--cyan);
+	font-size: clamp(0.8vw, 1.7dvh, 1.3vw);
+	font-weight: 700;
 }
 #role-selection {
-    height: min(92vw, 92vh);
-    width: min(92vw, 92vh);
-    flex: 1;
-    align-self: center;
-    justify-content: center;
-    gap: 2dvh;
+	height: min(92vw, 92vh);
+	width: min(92vw, 92vh);
+	flex: 1;
+	align-self: center;
+	justify-content: center;
+	gap: 2dvh;
 }
 .entry-intro,
 form,
@@ -63,32 +63,32 @@ form,
 #player-view,
 #gm-view,
 #player-vote {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .entry-intro {
-    gap: 1dvh;
+	gap: 1dvh;
 }
 .entry-intro h2,
 #player-view h2,
 #gm-view h2 {
-    font: 700 clamp(3vw, 4.2dvh, 5vw)/1 var(--display);
-    text-transform: uppercase;
-    text-align: center;
+	font: 700 clamp(3vw, 4.2dvh, 5vw)/1 var(--display);
+	text-transform: uppercase;
+	text-align: center;
 }
 .entry-intro p {
-    color: color-mix(in srgb, var(--white) 72%, transparent);
-    font-size: clamp(1vw, 2dvh, 1.5vw);
+	color: color-mix(in srgb, var(--white) 72%, transparent);
+	font-size: clamp(1vw, 2dvh, 1.5vw);
 }
 form {
-    gap: 3dvh;
-    padding: 4vw;
-    border: 0.12vw solid color-mix(in srgb, var(--cyan) 34%, transparent);
-    border-radius: 1vw;
-    background: color-mix(in srgb, var(--cyan) 8%, var(--surface));
+	gap: 3dvh;
+	padding: 4vw;
+	border: 0.12vw solid color-mix(in srgb, var(--cyan) 34%, transparent);
+	border-radius: 1vw;
+	background: color-mix(in srgb, var(--cyan) 8%, var(--surface));
 }
 .form-group {
-    gap: 0.8dvh;
+	gap: 0.8dvh;
 }
 .entry-actions,
 .game-info,
@@ -96,29 +96,29 @@ form {
 .vote-options,
 .player-list,
 .gm-controls {
-    display: flex;
+	display: flex;
 }
 .entry-actions {
-    gap: 2vw;
+	gap: 2vw;
 }
 #player-view,
 #gm-view {
-    width: min(94vw, 180vh);
-    flex: 1;
-    align-self: center;
-    gap: 2dvh;
-    padding: 2dvh 2vw;
+	width: min(94vw, 180vh);
+	flex: 1;
+	align-self: center;
+	gap: 2dvh;
+	padding: 2dvh 2vw;
 }
 .game-info,
 .game-stats {
-    gap: 1vw;
+	gap: 1vw;
 }
 .vote-options,
 .player-list,
 .gm-controls {
-    flex-wrap: wrap;
-    gap: 1vw;
+	flex-wrap: wrap;
+	gap: 1vw;
 }
 #player-vote {
-    gap: 1dvh;
+	gap: 1dvh;
 }

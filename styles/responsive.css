@@ -1,140 +1,140 @@
 @media (max-aspect-ratio: 1/1) {
-  #app-container {
-    gap: 2dvh;
-    padding: 2dvh 4vw;
-  }
-  header {
-    min-height: 17dvh;
-    padding: 1dvh 4vw;
-  }
-  h1 {
-    font-size: 11.5vw;
-  }
-  .header-subtitle {
-    font-size: 3.2vw;
-  }
-  #connection-status {
-    font-size: 3vw;
-  }
-  #role-selection {
-    width: 92vw;
-  }
-  .entry-intro h2,
-  #player-view h2,
-  #gm-view h2 {
-    font-size: 8vw;
-  }
-  .entry-intro p {
-    font-size: 3.8vw;
-  }
-  label {
-    font-size: 3.2vw;
-  }
-  small,
-  .game-status,
-  .room-code {
-    font-size: 3vw;
-  }
-  input,
-  button {
-    font-size: 4vw;
-  }
-  #player-view,
-  #gm-view {
-    width: 96vw;
-    gap: 1.5dvh;
-    padding: 1dvh 0;
-  }
-  .game-info {
-    flex-direction: column;
-    gap: 0;
-  }
-  .game-info p {
-    min-height: 6dvh;
-    border-right: 0;
-    border-bottom: 0.12vw solid color-mix(in srgb, var(--cyan) 28%, transparent);
-    font-size: 5.5vw;
-  }
-  .game-info p:last-child {
-    border-bottom: 0;
-  }
-  #btn-bank {
-    min-height: 28dvh;
-    font-size: 20vw;
-  }
-  #btn-bank i {
-    width: 14vw;
-    height: 14vw;
-  }
-  #player-vote h3 {
-    font-size: 6vw;
-  }
-  .stat-box p {
-    font-size: 5vw;
-  }
-  .bank-alert,
-  .question-box {
-    font-size: 4vw;
-  }
-  .player-item,
-  .gm-controls button {
-    font-size: 3.2vw;
-  }
+	#app-container {
+		gap: 2dvh;
+		padding: 2dvh 4vw;
+	}
+	header {
+		min-height: 17dvh;
+		padding: 1dvh 4vw;
+	}
+	h1 {
+		font-size: 11.5vw;
+	}
+	.header-subtitle {
+		font-size: 3.2vw;
+	}
+	#connection-status {
+		font-size: 3vw;
+	}
+	#role-selection {
+		width: 92vw;
+	}
+	.entry-intro h2,
+	#player-view h2,
+	#gm-view h2 {
+		font-size: 8vw;
+	}
+	.entry-intro p {
+		font-size: 3.8vw;
+	}
+	label {
+		font-size: 3.2vw;
+	}
+	small,
+	.game-status,
+	.room-code {
+		font-size: 3vw;
+	}
+	input,
+	button {
+		font-size: 3.2vw;
+	}
+	#player-view,
+	#gm-view {
+		width: 96vw;
+		gap: 1.5dvh;
+		padding: 1dvh 0;
+	}
+	.game-info {
+		flex-direction: column;
+		gap: 0;
+	}
+	.game-info p {
+		min-height: 6dvh;
+		border-right: 0;
+		border-bottom: 0.12vw solid color-mix(in srgb, var(--cyan) 28%, transparent);
+		font-size: 5.5vw;
+	}
+	.game-info p:last-child {
+		border-bottom: 0;
+	}
+	#btn-bank {
+		min-height: 28dvh;
+		font-size: 20vw;
+	}
+	#btn-bank i {
+		width: 14vw;
+		height: 14vw;
+	}
+	#player-vote h3 {
+		font-size: 6vw;
+	}
+	.stat-box p {
+		font-size: 5vw;
+	}
+	.bank-alert,
+	.question-box {
+		font-size: 4vw;
+	}
+	.player-item,
+	.gm-controls button {
+		font-size: 3.2vw;
+	}
 }
 
 @media (min-aspect-ratio: 1/1) {
-  #app-container {
-    height: 100dvh;
-    gap: 1.5vh;
-    padding: 2vh 10vw;
-  }
-  header {
-    min-height: 0;
-    flex: 0 0 auto;
-    padding: 0.8vh 2vw;
-  }
-  h1 {
-    font-size: clamp(4vw, 7vh, 6vw);
-  }
-  .header-subtitle {
-    font-size: clamp(0.7vw, 1.3vh, 1vw);
-  }
-  #connection-status {
-    font-size: clamp(0.8vw, 1.4vh, 1.1vw);
-  }
-  #role-selection {
-    width: min(58vw, 70vh);
-    flex: 0 1 auto;
-    gap: 1.5vh;
-  }
-  .entry-intro h2 {
-    font-size: clamp(3vw, 4vh, 4.5vw);
-  }
-  .entry-intro p {
-    font-size: clamp(1vw, 1.7vh, 1.3vw);
-  }
-  form {
-    gap: 1.3vh;
-    padding: 2vh 2vw;
-  }
-  label {
-    font-size: clamp(0.8vw, 1.5vh, 1.1vw);
-  }
-  small {
-    font-size: clamp(0.7vw, 1.3vh, 1vw);
-  }
-  input,
-  button {
-    min-height: 5.5vh;
-    font-size: clamp(1vw, 1.7vh, 1.3vw);
-  }
-  #player-view,
-  #gm-view {
-    width: min(90vw, 155vh);
-    gap: 1.2vh;
-    padding: 1vh 1vw;
-  }
-  #btn-bank {
-    min-height: 20vh;
-  }
+	#app-container {
+		height: 100dvh;
+		gap: 1.5vh;
+		padding: 2vh 10vw;
+	}
+	header {
+		min-height: 0;
+		flex: 0 0 auto;
+		padding: 0.8vh 2vw;
+	}
+	h1 {
+		font-size: clamp(4vw, 7vh, 6vw);
+	}
+	.header-subtitle {
+		font-size: clamp(0.7vw, 1.3vh, 1vw);
+	}
+	#connection-status {
+		font-size: clamp(0.8vw, 1.4vh, 1.1vw);
+	}
+	#role-selection {
+		width: min(58vw, 70vh);
+		flex: 0 1 auto;
+		gap: 1.5vh;
+	}
+	.entry-intro h2 {
+		font-size: clamp(3vw, 4vh, 4.5vw);
+	}
+	.entry-intro p {
+		font-size: clamp(1vw, 1.7vh, 1.3vw);
+	}
+	form {
+		gap: 1.3vh;
+		padding: 2vh 2vw;
+	}
+	label {
+		font-size: clamp(0.8vw, 1.5vh, 1.1vw);
+	}
+	small {
+		font-size: clamp(0.7vw, 1.3vh, 1vw);
+	}
+	input,
+	button {
+		min-height: 5.5vh;
+		font-size: clamp(1vw, 1.7vh, 1.3vw);
+	}
+	#player-view,
+	#gm-view {
+		width: min(90vw, 155vh);
+		gap: 1.2vh;
+		padding: 1vh 1vw;
+	}
+	#btn-bank {
+		min-height: 20vh;
+	}
 }

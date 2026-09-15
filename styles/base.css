@@ -1,11 +1,11 @@
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 h1,
 h2,
 h3,
 p {
-    margin: 0;
+	margin: 0;
 }
 header > *:first-child,
 #app-container > *:first-child,
@@ -15,7 +15,7 @@ header > *:first-child,
 .entry-intro > *:first-child,
 .form-group > *:first-child,
 #player-vote > *:first-child {
-    margin-top: 0;
+	margin-top: 0;
 }
 header > *:last-child,
 #app-container > *:last-child,
@@ -25,64 +25,64 @@ header > *:last-child,
 .entry-intro > *:last-child,
 .form-group > *:last-child,
 #player-vote > *:last-child {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 html,
 body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    min-height: 100dvh;
-    color: var(--white);
-    background: linear-gradient(
-        115deg,
-        color-mix(in srgb, var(--cyan) 16%, var(--surface)),
-        var(--ink) 62%
-    );
-    font-family: var(--main);
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	display: flex;
+	min-height: 100dvh;
+	color: var(--white);
+	background: linear-gradient(
+		115deg,
+		color-mix(in srgb, var(--cyan) 16%, var(--surface)),
+		var(--ink) 62%
+	);
+	font-family: var(--main);
 }
 button,
 input {
-    font: inherit;
+	font: inherit;
 }
 button {
-    min-height: 5dvh;
-    border: 0.12vw solid transparent;
-    border-radius: 3vw;
-    color: var(--white);
-    cursor: pointer;
-    display: flex;
-    flex: 1 1 0;
-    align-items: center;
-    justify-content: center;
-    gap: 0.7vw;
-    font-size: clamp(1vw, 2.2dvh, 1.6vw);
-    font-weight: 700;
-    transition:
-        filter 0.15s ease,
-        transform 0.15s ease;
+	min-height: 5dvh;
+	border: 0.12vw solid transparent;
+	border-radius: 3vw;
+	color: var(--white);
+	cursor: pointer;
+	display: flex;
+	flex: 1 1 0;
+	align-items: center;
+	justify-content: center;
+	gap: 0.7vw;
+	font-size: clamp(1vw, 2.2dvh, 1.6vw);
+	font-weight: 700;
+	transition:
+		filter 0.15s ease,
+		transform 0.15s ease;
 }
 button:hover:not(:disabled) {
-    filter: brightness(1.05);
-    transform: translateY(-0.15vh);
+	filter: brightness(1.05);
+	transform: translateY(-0.15vh);
 }
 button:disabled {
-    cursor: not-allowed;
-    opacity: 0.42;
+	cursor: not-allowed;
+	opacity: 0.42;
 }
 button:focus-visible,
 input:focus-visible {
-    outline: 0.25vw solid var(--white);
-    outline-offset: 0.25vw;
+	outline: 0.25vw solid var(--white);
+	outline-offset: 0.25vw;
 }
 .hidden {
-    display: none !important;
+	display: none !important;
 }
 .visible {
-    display: flex;
-    width: 100%;
-    flex: 1;
-    flex-direction: column;
+	display: flex;
+	width: 100%;
+	flex: 1;
+	flex-direction: column;
 }

@@ -1,18 +1,18 @@
 [
-    {
-        "question": "Quelle est la capitale de la France ?",
-        "reponse": "Paris"
-    },
-    {
-        "question": "Combien font 7 multiplié par 8 ?",
-        "reponse": "56"
-    },
-    {
-        "question": "Quel est le plus grand océan du monde ?",
-        "reponse": "L'océan Pacifique"
-    },
-    {
-        "question": "Qui a peint La Joconde ?",
-        "reponse": "Léonard de Vinci"
-    }
+	{
+		"question": "Quelle est la capitale de la France ?",
+		"reponse": "Paris"
+	},
+	{
+		"question": "Combien font 7 multiplié par 8 ?",
+		"reponse": "56"
+	},
+	{
+		"question": "Quel est le plus grand océan du monde ?",
+		"reponse": "L'océan Pacifique"
+	},
+	{
+		"question": "Qui a peint La Joconde ?",
+		"reponse": "Léonard de Vinci"
+	}
 ]

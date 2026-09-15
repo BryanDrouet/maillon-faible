@@ -1,16 +1,26 @@
 {
-  "name": "Le Maillon Faible",
-  "short_name": "Maillon Faible",
-  "description": "Jeu du Maillon Faible en direct, synchronisé en temps réel.",
-  "start_url": "/",
-  "scope": "/",
-  "display": "standalone",
-  "orientation": "any",
-  "lang": "fr",
-  "background_color": "#1c0c26",
-  "theme_color": "#1c0c26",
-  "icons": [
-    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-  ]
+	"name": "Le Maillon Faible",
+	"short_name": "Maillon Faible",
+	"description": "Jeu du Maillon Faible en direct, synchronisé en temps réel.",
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"orientation": "any",
+	"lang": "fr",
+	"background_color": "#1c0c26",
+	"theme_color": "#1c0c26",
+	"icons": [
+		{
+			"src": "/assets/icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/assets/icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	]
 }

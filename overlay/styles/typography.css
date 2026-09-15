@@ -1,27 +1,27 @@
 .score span,
 .center span {
-    max-width: 100%;
-    color: color-mix(in srgb, var(--white) 72%, transparent);
-    font: 700 clamp(1.5vw, 7vh, 3vw) var(--main);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+	max-width: 100%;
+	color: color-mix(in srgb, var(--white) 72%, transparent);
+	font: 700 clamp(1.5vw, 7vh, 3vw) var(--main);
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
 }
 strong {
-    max-width: 100%;
-    color: var(--gold);
-    font: 800 clamp(3vw, 17vh, 5vw)/1 var(--numeric);
-    text-transform: uppercase;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+	max-width: 100%;
+	color: var(--gold);
+	font: 800 clamp(3vw, 17vh, 5vw)/1 var(--numeric);
+	text-transform: uppercase;
+	overflow-wrap: anywhere;
+	word-break: break-word;
 }
 .center strong {
-    color: var(--cyan);
-    font-size: clamp(2vw, 11vh, 4vw);
-    font-family: var(--display);
+	color: var(--cyan);
+	font-size: clamp(2vw, 11vh, 4vw);
+	font-family: var(--display);
 }
 
 #timer {
-    color: var(--gold);
-    font: 700 clamp(1.2vw, 5vh, 2vw) var(--numeric);
-    font-style: normal;
+	color: var(--gold);
+	font: 700 clamp(1.2vw, 5vh, 2vw) var(--numeric);
+	font-style: normal;
 }

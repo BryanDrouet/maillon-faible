@@ -1,167 +1,162 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <base href="/">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Jeu du Maillon Faible en direct.">
-        <link rel="manifest" href="manifest.webmanifest">
-        <meta name="theme-color" content="#1c0c26">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Maillon Faible">
-        <link rel="icon" type="image/x-icon" href="assets/icon.ico">
-        <link rel="icon" type="image/png" href="assets/icon-512.png">
-        <link rel="apple-touch-icon" href="assets/icon-512.png">
-        <title>Le Maillon Faible</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="stage-lights" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <main id="app-container">
-            <header>
-                <h1 id="main-title">Le Maillon Faible</h1>
-                <p class="header-subtitle">
-                    Construisez la chaine. Ne soyez pas le maillon faible.
-                </p>
-                <div id="connection-status" aria-live="polite"></div>
-            </header>
+	<head>
+		<base href="/">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Jeu du Maillon Faible en direct.">
+		<link rel="manifest" href="manifest.webmanifest">
+		<meta name="theme-color" content="#1c0c26">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta
+			name="apple-mobile-web-app-status-bar-style"
+			content="black-translucent"
+		>
+		<meta name="apple-mobile-web-app-title" content="Maillon Faible">
+		<link rel="icon" type="image/x-icon" href="assets/icon.ico">
+		<link rel="icon" type="image/png" href="assets/icon-512.png">
+		<link rel="apple-touch-icon" href="assets/icon-512.png">
+		<title>Le Maillon Faible</title>
+		<link rel="stylesheet" href="style.css" >
+	</head>
+	<body>
+		<div class="stage-lights" aria-hidden="true">
+			<span></span><span></span><span></span><span></span><span></span>
+		</div>
+		<main id="app-container">
+			<header>
+				<h1 id="main-title">Le Maillon Faible</h1>
+				<p class="header-subtitle">
+					Construisez la chaine. Ne soyez pas le maillon faible.
+				</p>
+				<div id="connection-status" aria-live="polite"></div>
+			</header>
 
-            <section id="role-selection" class="visible" aria-labelledby="role-title">
-                <div class="entry-intro">
-                    <h2 id="role-title">Rejoindre une partie</h2>
-                    <p>
-                        Choisissez votre pseudo, puis rejoignez une partie ou prenez les
-                        commandes.
-                    </p>
-                </div>
-                <form id="role-form">
-                    <div class="form-group">
-                        <label for="player-name">Votre pseudo</label>
-                        <input
-                            type="text"
-                            id="player-name"
-                            name="player_name"
-                            maxlength="24"
-                            placeholder="Ex. Camille"
-                            aria-describedby="player-name-help"
-                            required>
-                        <small id="player-name-help"
-                            >Ce nom sera affiché aux autres joueurs.</small
-                        >
-                    </div>
-                    <div class="form-group" id="room-code-group">
-                        <label for="room-id">Code de la partie</label>
-                        <input
-                            type="text"
-                            id="room-id"
-                            name="room_id"
-                            maxlength="11"
-                            placeholder="Ex. ABC-DEF-GHI"
-                            autocapitalize="characters"
-                            aria-describedby="room-id-help">
-                        <small id="room-id-help"
-                            >Saisissez le code donné par le présentateur.</small
-                        >
-                    </div>
-                    <div class="entry-actions">
-                        <button
-                            type="submit"
-                            id="btn-create"
-                            name="entry-action"
-                            value="create"
-                        >
-                            Je présente
-                        </button>
-                        <button
-                            type="submit"
-                            id="btn-join"
-                            name="entry-action"
-                            value="join"
-                        >
-                            Je joue
-                        </button>
-                    </div>
-                </form>
-            </section>
+			<section id="role-selection" class="visible" aria-labelledby="role-title">
+				<div class="entry-intro">
+					<h2 id="role-title">Rejoindre une partie</h2>
+					<p>
+						Choisissez votre pseudo, puis rejoignez une partie ou prenez les
+						commandes.
+					</p>
+				</div>
+				<form id="role-form">
+					<div class="form-group">
+						<label for="player-name">Votre pseudo</label>
+						<input
+							type="text"
+							id="player-name"
+							name="player_name"
+							maxlength="24"
+							placeholder="Ex. Camille"
+							aria-describedby="player-name-help"
+							required
+						>
+						<small id="player-name-help"
+							>Ce nom sera affiché aux autres joueurs.</small
+						>
+					</div>
+					<div class="form-group" id="room-code-group">
+						<label for="room-id">Code de la partie</label>
+						<input
+							type="text"
+							id="room-id"
+							name="room_id"
+							maxlength="11"
+							placeholder="Ex. ABC-DEF-GHI"
+							autocapitalize="characters"
+							aria-describedby="room-id-help"
+						>
+						<small id="room-id-help"
+							>Saisissez le code donné par le présentateur.</small
+						>
+					</div>
+					<div class="entry-actions">
+						<button
+							type="submit"
+							id="btn-create"
+							name="entry-action"
+							value="create"
+						>
+							Je présente
+						</button>
+						<button
+							type="submit"
+							id="btn-join"
+							name="entry-action"
+							value="join"
+						>
+							Je joue
+						</button>
+					</div>
+				</form>
+			</section>
 
-            <section id="player-view" class="hidden" aria-labelledby="player-title">
-                <h2 id="player-title">Espace Joueur</h2>
-                <p id="player-room-code" class="room-code"></p>
-                <div class="game-info">
-                    <p id="player-bank-display"></p>
-                    <p id="player-cash-display"></p>
-                    <p id="player-next-chain-display"></p>
-                </div>
-                <p id="player-status" class="game-status" aria-live="polite"></p>
-                <p id="player-timer" class="game-timer" aria-live="polite"></p>
-                <button type="button" id="btn-bank" aria-label="Banquer l'argent">
-                    <span>BANQUE !</span>
-                </button>
-                <section id="player-vote" class="hidden" aria-labelledby="vote-title">
-                    <h3 id="vote-title">Votez pour le maillon faible</h3>
-                    <div id="vote-options" class="vote-options"></div>
-                </section>
-            </section>
+			<section id="player-view" class="hidden" aria-labelledby="player-title">
+				<h2 id="player-title">Espace Joueur</h2>
+				<p id="player-room-code" class="room-code"></p>
+				<div class="game-info">
+					<p id="player-bank-display"></p>
+					<p id="player-cash-display"></p>
+					<p id="player-next-chain-display"></p>
+				</div>
+				<p id="player-status" class="game-status" aria-live="polite"></p>
+				<p id="player-timer" class="game-timer" aria-live="polite"></p>
+				<button type="button" id="btn-bank" aria-label="Banquer l'argent">
+					<span>BANQUE !</span>
+				</button>
+				<section id="player-vote" class="hidden" aria-labelledby="vote-title">
+					<h3 id="vote-title">Votez pour le maillon faible</h3>
+					<div id="vote-options" class="vote-options"></div>
+				</section>
+			</section>
 
-            <section id="gm-view" class="hidden" aria-labelledby="gm-title">
-                <h2 id="gm-title">Espace Présentateur</h2>
-                <p id="gm-room-code" class="room-code"></p>
-                <div class="game-stats">
-                    <div class="stat-box">
-                        <p id="gm-bank-total"></p>
-                    </div>
-                    <div class="stat-box">
-                        <p id="gm-cash-turn"></p>
-                    </div>
-                    <div class="stat-box">
-                        <p id="gm-next-chain"></p>
-                    </div>
-                </div>
-                <div class="bank-alert">
-                    <p id="gm-bank-requests" aria-live="assertive"></p>
-                </div>
-                <div class="question-box">
-                    <p id="gm-question-text"></p>
-                    <p id="gm-answer-text"></p>
-                </div>
-                <p id="gm-round-status" class="game-status" aria-live="polite"></p>
-                <p id="gm-timer" class="game-timer" aria-live="polite"></p>
-                <div id="gm-player-list" class="player-list"></div>
-                <div class="gm-controls">
-                    <button type="button" id="btn-correct">
-                        Bonne réponse
-                    </button>
-                    <button type="button" id="btn-wrong">
-                        Mauvaise réponse
-                    </button>
-                    <button type="button" id="btn-validate-bank">
-                        Valider la banque
-                    </button>
-                    <button type="button" id="btn-next-question">
-                        Question suivante
-                    </button>
-                    <button type="button" id="btn-start">
-                        Démarrer la manche
-                    </button>
-                    <button type="button" id="btn-vote">
-                        Lancer le vote
-                    </button>
-                    <button type="button" id="btn-eliminate">
-                        Éliminer le plus voté
-                    </button>
-                    <button type="button" id="btn-new-game">
-                        Nouvelle partie
-                    </button>
-                    <button type="button" id="btn-copy-overlay">
-                        Copier le lien overlay
-                    </button>
-                </div>
-            </section>
-        </main>
-        <script type="module" src="main.js"></script>
-    </body>
+			<section id="gm-view" class="hidden" aria-labelledby="gm-title">
+				<h2 id="gm-title">Espace Présentateur</h2>
+				<p id="gm-room-code" class="room-code"></p>
+				<div class="game-stats">
+					<div class="stat-box">
+						<p id="gm-bank-total"></p>
+					</div>
+					<div class="stat-box">
+						<p id="gm-cash-turn"></p>
+					</div>
+					<div class="stat-box">
+						<p id="gm-next-chain"></p>
+					</div>
+				</div>
+				<div class="bank-alert">
+					<p id="gm-bank-requests" aria-live="assertive"></p>
+				</div>
+				<div class="question-box">
+					<p id="gm-question-text"></p>
+					<p id="gm-answer-text"></p>
+				</div>
+				<p id="gm-round-status" class="game-status" aria-live="polite"></p>
+				<p id="gm-timer" class="game-timer" aria-live="polite"></p>
+				<div id="gm-player-list" class="player-list"></div>
+				<div class="gm-controls">
+					<button type="button" id="btn-correct">Bonne réponse</button>
+					<button type="button" id="btn-wrong">Mauvaise réponse</button>
+					<button type="button" id="btn-validate-bank">
+						Valider la banque
+					</button>
+					<button type="button" id="btn-next-question">
+						Question suivante
+					</button>
+					<button type="button" id="btn-start">Démarrer la manche</button>
+					<button type="button" id="btn-vote">Lancer le vote</button>
+					<button type="button" id="btn-eliminate">
+						Éliminer le plus voté
+					</button>
+					<button type="button" id="btn-new-game">Nouvelle partie</button>
+					<button type="button" id="btn-copy-overlay">
+						Copier le lien overlay
+					</button>
+				</div>
+			</section>
+		</main>
+		<script type="module" src="main.js"></script>
+	</body>
 </html>
