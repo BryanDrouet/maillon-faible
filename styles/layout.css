@@ -31,10 +31,8 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1dvh;
-    padding: 2dvh 3vw;
-    background: color-mix(in srgb, var(--ink) 72%, transparent);
-    border-radius: 1vw;
+    gap: 0.6dvh;
+    padding: 1.2dvh 3vw;
     text-align: center;
 }
 h1 {
@@ -43,7 +41,8 @@ h1 {
 }
 .header-subtitle {
     color: color-mix(in srgb, var(--white) 70%, transparent);
-    font-size: clamp(1vw, 2.1dvh, 1.5vw);
+    font-size: clamp(0.7vw, 1.6dvh, 1.1vw);
+    white-space: nowrap;
 }
 #connection-status {
     color: var(--cyan);
@@ -51,6 +50,7 @@ h1 {
     font-weight: 700;
 }
 #role-selection {
+    height: min(92vw, 92vh);
     width: min(92vw, 92vh);
     flex: 1;
     align-self: center;
@@ -81,11 +81,11 @@ form,
     font-size: clamp(1vw, 2dvh, 1.5vw);
 }
 form {
-    gap: 2dvh;
-    padding: 3dvh 3vw;
+    gap: 3dvh;
+    padding: 4vw;
     border: 0.12vw solid color-mix(in srgb, var(--cyan) 34%, transparent);
     border-radius: 1vw;
-    background: color-mix(in srgb, var(--cyan) 8%, var(--ink));
+    background: color-mix(in srgb, var(--cyan) 8%, var(--surface));
 }
 .form-group {
     gap: 0.8dvh;

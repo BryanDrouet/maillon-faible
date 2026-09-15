@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;700&family=Barlow+Condensed:wght@700;800&family=Space+Grotesk:wght@400;700&display=swap");
 
 :root {
-  --ink: #070b14;
-  --cyan: #58d6ff;
-  --red: #f04d5d;
-  --gold: #ffd166;
-  --white: #f5f7fa;
-  --main: "Space Grotesk", sans-serif;
-  --display: "Barlow Condensed", sans-serif;
-  --numeric: "Azeret Mono", monospace;
+    --ink: #1c0c26;
+    --surface: #2b0d40;
+    --red: #3c0f59;
+    --cyan: #025373;
+    --white: #f0f0f0;
+    --gold: color-mix(in srgb, #025373 40%, #a4abbf 60%);
+    --main: "Space Grotesk", sans-serif;
+    --display: "Barlow Condensed", sans-serif;
+    --numeric: "Azeret Mono", monospace;
 }

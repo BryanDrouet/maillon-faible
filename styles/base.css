@@ -1,6 +1,32 @@
 * {
     box-sizing: border-box;
 }
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+header > *:first-child,
+#app-container > *:first-child,
+#role-selection > *:first-child,
+#player-view > *:first-child,
+#gm-view > *:first-child,
+.entry-intro > *:first-child,
+.form-group > *:first-child,
+#player-vote > *:first-child {
+    margin-top: 0;
+}
+header > *:last-child,
+#app-container > *:last-child,
+#role-selection > *:last-child,
+#player-view > *:last-child,
+#gm-view > *:last-child,
+.entry-intro > *:last-child,
+.form-group > *:last-child,
+#player-vote > *:last-child {
+    margin-bottom: 0;
+}
 html,
 body {
     width: 100%;
@@ -12,8 +38,8 @@ body {
     color: var(--white);
     background: linear-gradient(
         115deg,
-        color-mix(in srgb, var(--cyan) 12%, var(--ink)),
-        var(--ink) 52%
+        color-mix(in srgb, var(--cyan) 16%, var(--surface)),
+        var(--ink) 62%
     );
     font-family: var(--main);
 }
@@ -22,9 +48,9 @@ input {
     font: inherit;
 }
 button {
-    min-height: 6dvh;
+    min-height: 5dvh;
     border: 0.12vw solid transparent;
-    border-radius: 0.35vw;
+    border-radius: 3vw;
     color: var(--white);
     cursor: pointer;
     display: flex;
