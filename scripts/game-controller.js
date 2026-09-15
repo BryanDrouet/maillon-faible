@@ -98,7 +98,6 @@ async function enterRoom(create) {
 		);
 		if (result.snapshot.val().hostId !== clientId) return enterRoom(true);
 		role = "gm";
-		$("gm-room-code").textContent = `Salon : ${roomId}`;
 		showView("gm-view");
 	} else {
 		const snapshot = await new Promise((done) =>
@@ -113,8 +112,6 @@ async function enterRoom(create) {
 			name,
 			active: true,
 		});
-		$("player-title").textContent = `Joueur : ${name}`;
-		$("player-room-code").textContent = `Salon : ${roomId}`;
 		showView("player-view");
 	}
 	subscribe();

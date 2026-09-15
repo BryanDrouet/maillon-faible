@@ -23,8 +23,8 @@ export function showView(view) {
 export function renderGame(game, context) {
 	const cash = chainValue(game);
 	const nextCash = nextChainValue(game);
-	const timer = formatTimer(remainingSeconds(game));
-	setText("connection-status", `Salon ${context.roomId} synchronisé.`);
+	const timer =
+		game.phase === "lobby" ? "" : formatTimer(remainingSeconds(game));
 	setText("player-bank-display", `Banque : ${formatCurrency(game.bank)}`);
 	setText("player-cash-display", `Cash du tour : ${formatCurrency(cash)}`);
 	setText(
