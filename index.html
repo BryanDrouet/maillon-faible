@@ -34,14 +34,27 @@
 			</header>
 
 			<section id="role-selection" class="visible" aria-labelledby="role-title">
-				<div class="entry-intro">
-					<h2 id="role-title">Rejoindre une partie</h2>
-					<p>
-						Choisissez votre pseudo, puis rejoignez une partie ou prenez les
-						commandes.
-					</p>
-				</div>
 				<form id="role-form">
+					<div class="entry-intro">
+						<h2 id="role-title">Rejoindre une partie</h2>
+						<p>
+							Choisissez votre pseudo, puis rejoignez une partie ou prenez les
+							commandes.
+					</p>
+					</div>
+					<div class="role-choice" role="radiogroup" aria-label="Votre rôle">
+						<button
+							type="button"
+							id="choice-gm"
+							class="active"
+							aria-pressed="true"
+						>
+							Présentateur
+						</button>
+						<button type="button" id="choice-player" aria-pressed="false">
+							Joueur
+						</button>
+					</div>
 					<div class="form-group">
 						<label for="player-name">Votre pseudo</label>
 						<input
@@ -57,7 +70,7 @@
 							>Ce nom sera affiché aux autres joueurs.</small
 						>
 					</div>
-					<div class="form-group" id="room-code-group">
+					<div class="form-group hidden" id="room-code-group" aria-hidden="true">
 						<label for="room-id">Code de la partie</label>
 						<input
 							type="text"
@@ -73,22 +86,7 @@
 						>
 					</div>
 					<div class="entry-actions">
-						<button
-							type="submit"
-							id="btn-create"
-							name="entry-action"
-							value="create"
-						>
-							Je présente
-						</button>
-						<button
-							type="submit"
-							id="btn-join"
-							name="entry-action"
-							value="join"
-						>
-							Je joue
-						</button>
+						<button type="submit" id="btn-submit">Je présente</button>
 					</div>
 				</form>
 			</section>

@@ -27,18 +27,20 @@ input {
 input:focus {
 	border-color: var(--cyan);
 }
-#btn-create,
+#btn-submit,
 #btn-wrong,
 #btn-eliminate,
 #btn-bank {
 	background: var(--red);
 }
-#btn-join,
 #btn-next-question,
 #btn-correct,
 #btn-start,
 .vote-options button {
 	background: color-mix(in srgb, var(--cyan) 57%, var(--ink));
+}
+#btn-submit {
+	background: var(--red);
 }
 #btn-validate-bank {
 	background: color-mix(in srgb, var(--gold) 65%, var(--ink));

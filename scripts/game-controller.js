@@ -153,9 +153,34 @@ export async function startGameApp() {
 	$("room-id").addEventListener("input", () => {
 		$("room-id").value = formatRoomCode($("room-id").value);
 	});
+	const roomCodeGroup = $("room-code-group");
+	const roomIdInput = $("room-id");
+	const btnSubmit = $("btn-submit");
+	const choiceGm = $("choice-gm");
+	const choicePlayer = $("choice-player");
+	let createSelected = true;
+	const updateRoleUI = () => {
+		choiceGm.classList.toggle("active", createSelected);
+		choiceGm.setAttribute("aria-pressed", String(createSelected));
+		choicePlayer.classList.toggle("active", !createSelected);
+		choicePlayer.setAttribute("aria-pressed", String(!createSelected));
+		roomCodeGroup.classList.toggle("hidden", createSelected);
+		roomCodeGroup.setAttribute("aria-hidden", String(createSelected));
+		roomIdInput.required = !createSelected;
+		btnSubmit.textContent = createSelected ? "Je présente" : "Je joue";
+	};
+	choiceGm.onclick = () => {
+		createSelected = true;
+		updateRoleUI();
+	};
+	choicePlayer.onclick = () => {
+		createSelected = false;
+		updateRoleUI();
+	};
+	updateRoleUI();
 	$("role-form").onsubmit = (submit) => {
 		submit.preventDefault();
-		enterRoom(submit.submitter?.value === "create");
+		enterRoom(createSelected);
 	};
 	$("btn-bank").onclick = () =>
 		change({ bankRequest: { id: clientId, name }, ...gameEvent("bank") });

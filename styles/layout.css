@@ -90,6 +90,19 @@ form {
 .form-group {
 	gap: 0.8dvh;
 }
+.role-choice {
+	display: flex;
+	gap: 1vw;
+}
+.role-choice button {
+	flex: 1;
+	background: transparent;
+	border: 0.12vw solid color-mix(in srgb, var(--white) 20%, transparent);
+}
+.role-choice button.active {
+	border-color: var(--cyan);
+	background: color-mix(in srgb, var(--cyan) 16%, transparent);
+}
 .entry-actions,
 .game-info,
 .game-stats,
