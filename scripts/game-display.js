@@ -25,11 +25,18 @@ export function renderGame(game, context) {
 	const nextCash = nextChainValue(game);
 	const timer =
 		game.phase === "lobby" ? "" : formatTimer(remainingSeconds(game));
+	setText("player-room-code", `Partie : ${context.roomId}`);
+	setText("gm-room-code", `Code de la partie : ${context.roomId}`);
 	setText("player-bank-display", `Banque : ${formatCurrency(game.bank)}`);
 	setText("player-cash-display", `Cash du tour : ${formatCurrency(cash)}`);
 	setText(
 		"player-next-chain-display",
 		`Prochain palier : ${formatCurrency(nextCash)}`,
+	);
+	const question = context.questions[game.questionIndex || 0];
+	setText(
+		"player-question",
+		question ? question.question : "En attente de la prochaine question.",
 	);
 	setText("player-status", phaseLabel(game.phase));
 	setText("player-timer", `${timer}`);
@@ -53,21 +60,18 @@ function renderPlayer(game, context) {
 		game.phase !== "voting" || !player?.active,
 	);
 	const voted = Boolean(game.votes?.[context.clientId]);
-	const signature = `${game.phase}|${voted}|${JSON.stringify(game.players || {})}`;
-	if ($("vote-options").dataset.signature === signature) return;
-	$("vote-options").dataset.signature = signature;
-	$("vote-options").replaceChildren(
-		...activePlayers(game)
-			.filter(([id]) => id !== context.clientId)
-			.map(([id, playerToVote]) => {
-				const button = document.createElement("button");
-				button.type = "button";
-				button.textContent = playerToVote.name;
-				button.disabled = voted;
-				button.onclick = () => context.voteFor(id);
-				return button;
-			}),
-	);
+	const voteName = $("vote-name");
+	const voteButton = $("btn-submit-vote");
+	voteName.disabled = voted;
+	voteButton.disabled = voted;
+	$("vote-feedback").textContent = voted ? "Vote enregistré." : "";
+	$("vote-form").onsubmit = (event) => {
+		event.preventDefault();
+		const isValid = context.voteForName(voteName.value.trim());
+		$("vote-feedback").textContent = isValid
+			? "Vote enregistré."
+			: "Ce pseudo ne correspond pas à un joueur actif.";
+	};
 }
 
 function renderHost(game, context) {
@@ -76,14 +80,20 @@ function renderHost(game, context) {
 		(out, id) => ({ ...out, [id]: (out[id] || 0) + 1 }),
 		{},
 	);
+	$("gm-view").dataset.phase = game.phase;
 	setText(
 		"gm-bank-requests",
 		game.bankRequest
 			? `BANQUE demandée par : ${game.bankRequest.name}`
 			: "Aucune demande de banque.",
 	);
+	$("gm-bank-requests").parentElement.classList.toggle(
+		"hidden",
+		!game.bankRequest,
+	);
 	$("btn-validate-bank").disabled =
 		!game.bankRequest || game.phase !== "playing";
+	$("btn-validate-bank").classList.toggle("hidden", !game.bankRequest);
 	setText(
 		"gm-question-text",
 		question ? `Question : ${question.question}` : "Aucune question chargée.",

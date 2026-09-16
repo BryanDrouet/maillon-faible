@@ -1,6 +1,7 @@
 import {
 	onValue,
 	ref,
+	remove,
 	runTransaction,
 	update,
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
@@ -33,6 +34,12 @@ const change = (valuesToApply) => {
 	if (state) update(roomRef(), valuesToApply);
 };
 
+const savedSession = () => ({
+	roomId: sessionStorage.getItem("mf-room"),
+	role: sessionStorage.getItem("mf-role"),
+	name: sessionStorage.getItem("mf-name"),
+});
+
 function subscribe() {
 	onValue(roomRef(), (snapshot) => {
 		state = snapshot.val();
@@ -46,8 +53,16 @@ function subscribe() {
 			role,
 			clientId,
 			questions,
-			voteFor: (playerId) =>
-				update(ref(db, `rooms/${roomId}/votes`), { [clientId]: playerId }),
+			voteForName: (voteName) => {
+				const target = activePlayers(state).find(
+					([id, player]) =>
+						id !== clientId &&
+						player.name.localeCompare(voteName, "fr", { sensitivity: "accent" }) === 0,
+				);
+				if (!target) return false;
+				update(ref(db, `rooms/${roomId}/votes`), { [clientId]: target[0] });
+				return true;
+			},
 		});
 	});
 	clearInterval(timerId);
@@ -58,8 +73,16 @@ function subscribe() {
 			role,
 			clientId,
 			questions,
-			voteFor: (playerId) =>
-				update(ref(db, `rooms/${roomId}/votes`), { [clientId]: playerId }),
+			voteForName: (voteName) => {
+				const target = activePlayers(state).find(
+					([id, player]) =>
+						id !== clientId &&
+						player.name.localeCompare(voteName, "fr", { sensitivity: "accent" }) === 0,
+				);
+				if (!target) return false;
+				update(ref(db, `rooms/${roomId}/votes`), { [clientId]: target[0] });
+				return true;
+			},
 		});
 		if (
 			role === "gm" &&
@@ -70,16 +93,21 @@ function subscribe() {
 	}, 1000);
 }
 
-async function enterRoom(create) {
+async function enterRoom(create, resume = false) {
 	unlockAudio();
-	name = $("player-name").value.trim().slice(0, 24);
-	roomId = create ? createRoomCode() : formatRoomCode($("room-id").value);
+	const saved = savedSession();
+	name = resume ? saved.name : $("player-name").value.trim().slice(0, 24);
+	roomId = resume
+		? saved.roomId
+		: create
+			? createRoomCode()
+			: formatRoomCode($("room-id").value);
 	if (!name || (!create && !roomId)) {
 		$("connection-status").textContent =
 			"Indiquez votre pseudo et le code de la partie.";
 		return;
 	}
-	if (create) {
+	if (create && !resume) {
 		const result = await runTransaction(
 			roomRef(),
 			(current) =>
@@ -99,6 +127,13 @@ async function enterRoom(create) {
 		if (result.snapshot.val().hostId !== clientId) return enterRoom(true);
 		role = "gm";
 		showView("gm-view");
+	} else if (resume && saved.role === "gm") {
+		const snapshot = await new Promise((done) =>
+			onValue(roomRef(), done, { onlyOnce: true }),
+		);
+		if (!snapshot.exists() || snapshot.val().hostId !== clientId) return;
+		role = "gm";
+		showView("gm-view");
 	} else {
 		const snapshot = await new Promise((done) =>
 			onValue(roomRef(), done, { onlyOnce: true }),
@@ -114,6 +149,9 @@ async function enterRoom(create) {
 		});
 		showView("player-view");
 	}
+	sessionStorage.setItem("mf-room", roomId);
+	sessionStorage.setItem("mf-role", role);
+	sessionStorage.setItem("mf-name", name);
 	subscribe();
 }
 
@@ -178,6 +216,10 @@ export async function startGameApp() {
 		updateRoleUI();
 	};
 	updateRoleUI();
+	const saved = savedSession();
+	if (saved.roomId && saved.role && saved.name) {
+		enterRoom(saved.role === "gm", true);
+	}
 	$("role-form").onsubmit = (submit) => {
 		submit.preventDefault();
 		enterRoom(createSelected);
@@ -217,6 +259,26 @@ export async function startGameApp() {
 	$("btn-vote").onclick = () =>
 		change({ phase: "voting", votes: {}, ...gameEvent("end") });
 	$("btn-eliminate").onclick = eliminate;
+	$("btn-stop-game").onclick = () => {
+		if (!state || state.phase === "ended") return;
+		change({
+			phase: "ended",
+			endsAt: 0,
+			bankRequest: null,
+			votes: {},
+			...gameEvent("end"),
+		});
+	};
+	$("btn-delete-room").onclick = async () => {
+		if (!state || !confirm("Supprimer définitivement ce salon ?")) return;
+		await remove(roomRef());
+		["mf-room", "mf-role", "mf-name"].forEach((key) =>
+			sessionStorage.removeItem(key),
+		);
+		clearInterval(timerId);
+		showView("role-selection");
+		$("connection-status").textContent = "Salon supprimé.";
+	};
 	$("btn-new-game").onclick = () =>
 		runTransaction(roomRef(), (game) => ({
 			...game,

@@ -31,6 +31,22 @@ input:focus {
 #btn-wrong,
 #btn-eliminate,
 #btn-bank {
+
+.vote-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8dvh;
+}
+
+.vote-options input {
+	flex: 1;
+	width: auto;
+}
+
+.vote-options button {
+	flex: 0 0 auto;
+	padding-inline: 1.5vw;
+}
 	background: var(--red);
 }
 #btn-next-question,
@@ -53,6 +69,13 @@ input:focus {
 	color: var(--ink);
 	background: var(--white);
 }
+#btn-stop-game {
+	background: var(--red);
+}
+#btn-delete-room {
+	color: var(--white);
+	background: color-mix(in srgb, var(--red) 72%, var(--ink));
+}
 .room-code {
 	align-self: flex-start;
 	color: var(--cyan);
@@ -66,17 +89,24 @@ input:focus {
 }
 .game-info p {
 	flex: 1;
-	min-height: 8dvh;
+	min-height: 3.8dvh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-right: 0.12vw solid color-mix(in srgb, var(--cyan) 28%, transparent);
-	font: 700 clamp(1.5vw, 3dvh, 2.5vw) var(--display);
+	font: 700 clamp(0.75vw, 1.6dvh, 1.2vw) var(--display);
 	text-align: center;
 	text-transform: uppercase;
 	font-family: var(--numeric);
 	overflow-wrap: anywhere;
 	word-break: break-word;
+}
+.player-question {
+	padding: 1.2dvh 1.4vw;
+	border-left: 0.35vw solid var(--cyan);
+	background: color-mix(in srgb, var(--cyan) 7%, var(--surface));
+	font-size: clamp(1.1vw, 2.1dvh, 1.8vw);
+	line-height: 1.2;
 }
 .game-info p:last-child {
 	border: 0;
@@ -84,10 +114,12 @@ input:focus {
 }
 #btn-bank {
 	flex: 1;
-	min-height: 24dvh;
+	min-height: 28dvh;
 	border-color: color-mix(in srgb, var(--white) 45%, var(--red));
-	box-shadow: 1vw 1vw 0 color-mix(in srgb, var(--red) 23%, transparent);
-	font: 800 clamp(7vw, 12dvh, 12vw) var(--display);
+	box-shadow:
+		1vw 1vw 0 color-mix(in srgb, var(--red) 23%, transparent),
+		0 0 3vw color-mix(in srgb, var(--red) 28%, transparent);
+	font: 800 clamp(8vw, 14dvh, 14vw) var(--display);
 }
 #btn-bank i {
 	width: 6vw;
@@ -117,6 +149,7 @@ input:focus {
 	justify-content: center;
 	gap: 1vw;
 	color: var(--cyan);
+	padding: 1dvh 1vw;
 }
 .stat-box p {
 	color: var(--white);
@@ -166,4 +199,34 @@ input:focus {
 .gm-controls button {
 	flex: 1 1 20%;
 	font-size: clamp(0.8vw, 1.6dvh, 1.2vw);
+}
+
+#gm-view[data-phase="lobby"] .gm-action:not(.gm-action-lobby):not(.gm-action-secondary),
+#gm-view[data-phase="playing"] .gm-action:not(.gm-action-playing):not(.gm-action-secondary),
+#gm-view[data-phase="voting"] .gm-action:not(.gm-action-voting):not(.gm-action-secondary),
+#gm-view[data-phase="ended"] .gm-action:not(.gm-action-ended):not(.gm-action-secondary) {
+	display: none;
+}
+
+.gm-controls .gm-action {
+	min-height: 4.5dvh;
+	padding: 0.7dvh 1vw;
+	width: 100%;
+}
+
+#gm-view .game-stats {
+	gap: 0.6vw;
+}
+
+#gm-view .stat-box {
+	min-height: 6dvh;
+}
+
+#gm-view .stat-box p {
+	font-size: clamp(2.3vw, 2dvh, 1.7vw);
+}
+
+#gm-view .question-box {
+	gap: 1dvh;
+	padding: 1.2dvh 1.4vw;
 }

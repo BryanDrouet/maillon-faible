@@ -1,0 +1,113 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	background: transparent;
+	color: var(--white);
+}
+
+.overlay2 {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.ladder {
+	position: absolute;
+	top: 3vh;
+	left: 25%;
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 0.6vh;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	transform: translateX(-50%);
+}
+
+.chip {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-width: 9vw;
+	padding: 0.6vh 1vw;
+	border-radius: 999px;
+	background: linear-gradient(
+		180deg,
+		color-mix(in srgb, var(--cyan) 55%, white 10%),
+		var(--cyan)
+	);
+	border: 0.15vw solid color-mix(in srgb, var(--cyan) 60%, white 20%);
+	box-shadow:
+		inset 0 0.3vh 0 color-mix(in srgb, white 25%, transparent),
+		0 0.4vh 0.6vh rgba(0, 0, 0, 0.4);
+	color: white;
+	transition:
+		transform 0.4s ease,
+		box-shadow 0.4s ease;
+}
+
+.chip.current {
+	background: linear-gradient(180deg, #ffd76a, var(--gold));
+	border-color: color-mix(in srgb, var(--gold) 70%, white 20%);
+	color: var(--ink);
+	transform: scale(1.12);
+	box-shadow:
+		inset 0 0.3vh 0 rgba(255, 255, 255, 0.6),
+		0 0 2vw color-mix(in srgb, var(--gold) 70%, transparent);
+}
+
+.bank-display {
+	position: absolute;
+	top: calc(3vh + 43vh);
+	left: 25%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-width: 9vw;
+	padding: 0.6vh 1vw;
+	border: 0.15vw solid #000;
+	border-radius: 999px;
+	background: linear-gradient(180deg, #3a3040, var(--bank));
+	box-shadow: 0 0.4vh 0.6vh rgba(0, 0, 0, 0.4);
+	transform: translateX(-50%);
+}
+
+.timer-badge {
+	position: absolute;
+	right: 2vw;
+	bottom: 3vh;
+	padding: 1vh 1.6vw;
+	background: color-mix(in srgb, var(--ink) 92%, transparent);
+	border: 0.15vw solid var(--cyan);
+	border-radius: 0.8vw;
+	box-shadow: 0 0 1.5vw color-mix(in srgb, var(--cyan) 50%, transparent);
+}
+
+.vote-bubbles {
+	position: absolute;
+	bottom: 3vh;
+	left: 50%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.6vw;
+	max-width: 45vw;
+	transform: translateX(-50%);
+}
+
+.vote-bubble {
+	padding: 0.5vh 1vw;
+	border: 0.12vw solid color-mix(in srgb, var(--cyan) 65%, white 15%);
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--ink) 88%, transparent);
+	box-shadow: 0 0 1vw color-mix(in srgb, var(--cyan) 35%, transparent);
+	color: var(--white);
+	font: 700 clamp(0.7vw, 2.2vh, 1vw) var(--main);
+}

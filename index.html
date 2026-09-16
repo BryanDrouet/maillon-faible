@@ -99,6 +99,7 @@
 					<p id="player-cash-display"></p>
 					<p id="player-next-chain-display"></p>
 				</div>
+				<p id="player-question" class="player-question"></p>
 				<p id="player-status" class="game-status" aria-live="polite"></p>
 				<p id="player-timer" class="game-timer" aria-live="polite"></p>
 				<button type="button" id="btn-bank" aria-label="Banquer l'argent">
@@ -106,7 +107,14 @@
 				</button>
 				<section id="player-vote" class="hidden" aria-labelledby="vote-title">
 					<h3 id="vote-title">Votez pour le maillon faible</h3>
-					<div id="vote-options" class="vote-options"></div>
+					<form id="vote-form" class="vote-form">
+						<label for="vote-name">Pseudo du joueur</label>
+						<div class="vote-options">
+							<input id="vote-name" type="text" maxlength="24" autocomplete="off" required>
+							<button type="submit" id="btn-submit-vote">Voter</button>
+						</div>
+						<small id="vote-feedback" aria-live="polite"></small>
+					</form>
 				</section>
 			</section>
 
@@ -135,21 +143,27 @@
 				<p id="gm-timer" class="game-timer" aria-live="polite"></p>
 				<div id="gm-player-list" class="player-list"></div>
 				<div class="gm-controls">
-					<button type="button" id="btn-correct">Bonne réponse</button>
-					<button type="button" id="btn-wrong">Mauvaise réponse</button>
-					<button type="button" id="btn-validate-bank">
+					<button type="button" id="btn-start" class="gm-action gm-action-lobby">Démarrer la manche</button>
+					<button type="button" id="btn-correct" class="gm-action gm-action-playing">Bonne réponse</button>
+					<button type="button" id="btn-wrong" class="gm-action gm-action-playing">Mauvaise réponse</button>
+					<button type="button" id="btn-validate-bank" class="gm-action gm-action-playing">
 						Valider la banque
 					</button>
-					<button type="button" id="btn-next-question">
+					<button type="button" id="btn-next-question" class="gm-action gm-action-playing">
 						Question suivante
 					</button>
-					<button type="button" id="btn-start">Démarrer la manche</button>
-					<button type="button" id="btn-vote">Lancer le vote</button>
-					<button type="button" id="btn-eliminate">
+					<button type="button" id="btn-vote" class="gm-action gm-action-playing">Lancer le vote</button>
+					<button type="button" id="btn-eliminate" class="gm-action gm-action-voting">
 						Éliminer le plus voté
 					</button>
-					<button type="button" id="btn-new-game">Nouvelle partie</button>
-					<button type="button" id="btn-copy-overlay">
+					<button type="button" id="btn-new-game" class="gm-action gm-action-ended">Nouvelle partie</button>
+					<button type="button" id="btn-stop-game" class="gm-action gm-action-secondary">
+						Arrêter la partie
+					</button>
+					<button type="button" id="btn-delete-room" class="gm-action gm-action-secondary">
+						Supprimer le salon
+					</button>
+					<button type="button" id="btn-copy-overlay" class="gm-action gm-action-secondary">
 						Copier le lien overlay
 					</button>
 				</div>

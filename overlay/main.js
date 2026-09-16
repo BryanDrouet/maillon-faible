@@ -26,9 +26,13 @@ let timerId;
 function render(game) {
 	setText("bank", formatCurrency(game.bank));
 	setText("cash", formatCurrency(chainValue(game)));
+	setText("prev-chain", formatCurrency(chainValue(game)));
 	setText("next-chain", formatCurrency(nextChainValue(game)));
 	setText("status", phaseLabel(game.phase));
-	setText("timer", `${formatTimer(remainingSeconds(game))}`);
+	setText(
+		"timer",
+		game.phase === "lobby" ? "" : formatTimer(remainingSeconds(game)),
+	);
 }
 
 function startTimer() {

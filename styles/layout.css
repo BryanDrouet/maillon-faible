@@ -58,7 +58,7 @@ h1 {
 	gap: 2dvh;
 }
 .entry-intro,
-form,
+#role-form,
 .form-group,
 #player-view,
 #gm-view,
@@ -80,7 +80,7 @@ form,
 	color: color-mix(in srgb, var(--white) 72%, transparent);
 	font-size: clamp(1vw, 2dvh, 1.5vw);
 }
-form {
+#role-form {
 	gap: 3dvh;
 	padding: 4vw;
 	border: 0.12vw solid color-mix(in srgb, var(--cyan) 34%, transparent);
